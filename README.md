@@ -6,4 +6,8 @@
 * Used the 'final.csv' file from this dataset on kaggle to perform initial data cleaning:
 URL: https://www.kaggle.com/datasets/yelexa/spotify200
 
+### This project uses psycopg2 to import the Postgresql database into the flask. 
+If you do not have psycopg2 already installed. In terminal you will need to use this command:
+* "pip install psycopg2"
+
 
