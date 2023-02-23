@@ -13,6 +13,7 @@ CREATE DATABASE "spotify_DB"
 
 --Create Tables
 CREATE TABLE Spotify_data (
+    id SERIAL not null primary key,	
     uri VARCHAR,
     rank INT,
     artist_names VARCHAR,
