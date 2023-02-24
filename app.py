@@ -33,34 +33,35 @@ app = Flask(__name__)
 def main():
     print("Server received request for 'Home' page...")
     return("<div ><p><h1> Welcome to Spotify Data Api!</h1></p>"
-    "<li><strong> spotyify_table:</strong><font color='orange'> /api/v1.0/</font></li>")
+    "<li><strong> spotyify_table:</strong><font color='orange'> /api/v1.0/sdata</font></li>")
 
-@app.route("/api/v1.0/")
-def population():
-#     # spotify1 = session.query(table)
-#     # spotify1 = pd.read_sql('select track_name, week from spotify_data group by week', con=engine)
-#     # df = pd.DataFrame(spotify1)
-    data = pd.read_sql("select rank, week from spotify_data",engine)
-    # # session.close()
-    # # ab = spotify1.groupby('week')
-    df1 = data.to_dict()
-    return jsonify(df1)
+@app.route("/api/v1.0/sdata")
+def sdataQuery():
+    """Return a list of department details"""
+    
+    deptt = session.query(t.artist_names,t.rank,t.artist_genre, t.track_name, t.country, t.streams, t.danceability,
+        t.tempo, t.loudness, t.acousticness, t.week).all()
+    slist = []  
+    for d in deptt:
+        sdlist = {}
+        sdlist['artists']=d[0]
+        sdlist['rank']=d[1]
+        sdlist['genre']=d[2]
+        sdlist['track']=d[3]
+        sdlist['country']=d[4]
+        sdlist['streams']=d[5]
+        sdlist['dance']=float(d[6])
+        sdlist['tempo']=float(d[7])
+        sdlist['loud']=float(d[8])
+        sdlist['acoustic']=float(d[9])
+        sdlist['weeks']=str(d[10])
 
-    # # Query all stations from the station table
-    # station_results = session.query(Station.station, Station.station_name).group_by(Station.station).all()
+        slist.append(sdlist)
 
-    # station_list = list(np.ravel(station_results))
-    # return jsonify(station_list)
+    #dt = {d:n for d,n in deptt}
+    return jsonify(slist)
 
-   
-    results = session.query(t.rank,t.week).group_by(t.week).all()
-    data = list(np.ravel(results))
-    session.close()
-    return jsonify(data)
 
-# @app.route("/app")
-# def home():
-#     return render_template("index.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
