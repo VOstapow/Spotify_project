@@ -1,51 +1,79 @@
-# imports 
-# %matplotlib inline
-from matplotlib import style
-style.use('fivethirtyeight')
-import matplotlib.pyplot as plt
 
-import numpy as np
-import pandas as pd
-import datetime as dt
-
-
-# Python SQL toolkit and Object Relational Mapper
+#################################################
+# Imports 
+#################################################
+import sqlite3
 import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func, inspect
 
-from flask import Flask, jsonify, request_finished
+from flask import Flask, jsonify, request
+
 #################################################
-engine = create_engine("sqlite:///db.sqlite")
+# Database Setup
+#################################################
+engine = create_engine("sqlite:///Resources/spotify_db.sqlite")
 
 # reflect an existing database into a new model
 Base = automap_base()
+
 # reflect the tables
 Base.prepare(autoload_with=engine)
 
+# Save references to each table
 spotify = Base.classes.spotify
-#################################################
-app = Flask(__name__)
-#################################################
-# Data
-session = Session(engine)
-session.close
-#################################################
-@app.route("/")
-def home():
-    return(
-    f"Welcome to the Climate Analysis API! <br/>"
-    f"Available Routes:<br/>"
-    f"Precipitation ----> /api/v1.0/precipitations <br/>"
-    f"Station -----------> /api/v1.0/stations <br/>"
-    f"Tobs -------------> /api/v1.0/tobs <br/>"
-    f"Dates ------------> /api/v1.0/dates <br/>"
-    f"Start -------------> /api/v1.0/dates/<start> <br/>"
-    f"Start/End -------> /api/v1.0/dates/<start>/<end> <br/>"
-    )
-#################################################
 
 #################################################
+# Flask Setup
+#################################################
+app = Flask(__name__)
+
+#################################################
+# Flask Routes - HOME
+##################################################
+@app.route("/")
+def home():
+   return("Hi")
+#################################################
+@app.route('/api/v1.0/data')
+def data():
+    session = Session(engine)
+    data = session.query(spotify.artist_names, spotify.rank, spotify.artist_genre, spotify.track_name, spotify.country, spotify.streams, spotify.danceability, spotify.tempo, spotify.loudness, spotify.acousticness, spotify.week).all()
+    dict = []
+    for row in data: 
+        column = {}
+        column["Artists"] = row[0]
+        column["Rank"] = row[1]
+        column["Genre"] = row[2]
+        column["Track"] = row[3]
+        column["Country"] = row[4]
+        column["Streams"] = row[5]
+        column["Danceability"] = row[6]
+        column["Tempo"] = row[7]
+        column["Loudness"] = row[8]
+        column["Acousticness"] = row[9]
+        column["Week"] = row[10]
+        dict.append(column)
+    session.close
+        
+    return jsonify(dict)
+#################################################
+@app.route('/api/v1.0/topArtists')
+def topArtists():
+    session = Session(engine)
+    data = session.query(spotify.artist_names, spotify.streams, spotify.country).all()
+    dict = []
+    for row in data: 
+        column = {}
+        column["Artists"] = row[0]
+        column["Streams"] = row[1]
+        column["Country"] = row[2]
+        dict.append(column)
+    session.close
+    
+    return jsonify(dict)
+#################################################
+    
 if __name__ == "__main__":
     app.run(debug=True)

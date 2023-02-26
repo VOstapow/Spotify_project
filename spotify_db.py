@@ -4,19 +4,23 @@ import pandas as pd
 from pathlib import Path
 
 # Create new path for sqlite file 
-database_path = "db.sqlite"
+database_path = "Resources/spotify_db.sqlite"
 Path(database_path).touch()
 
 
 conn = sqlite3.connect(database_path)
 c = conn.cursor()
 
+c.execute('drop table if exists spotify')
+
 # Create table 
-# Need primary key for table to be created 
-c.execute('''create table spotify ( uri text primary key, 
+# Need primary key for table to be created (id interger primary key)
+c.execute('''create table spotify (id int primary key,
+          uri text, 
           rank int, 
           artist_names text, 
-          artist_id text, 
+          artist_id text,
+          artist_genre text, 
           artist_img text, 
           track_name text, 
           album_cover text, 
@@ -30,8 +34,9 @@ c.execute('''create table spotify ( uri text primary key,
           loudness float,
           tempo float)''')
 
-# Reference from csv path 
-csv = pd.read_csv("vang2.csv")
+# REad csv file
+csv = pd.read_csv("Resources/spotify.csv")
+# Load data to SQLite
 csv.to_sql("spotify", conn, if_exists='append', index=False)
 
 conn.close()
