@@ -1,5 +1,5 @@
 function makeplot() {
-    d3.csv("https://raw.githubusercontent.com/skumaridev/music/main/BarChart.csv", function(data){ processData(data) } );
+    d3.csv("https://raw.githubusercontent.com/trvrbrdgs/Spotify_project/main/music-main/BarChart.csv", function(data){ processData(data) } );
   
   };
   
@@ -31,7 +31,7 @@ function makeplot() {
       
     }];
   
-    Plotly.newPlot('myDiv', traces,
+    Plotly.newPlot('bar', traces,
       {title: 'Fiscal Year Month-Over-Month Streams In North America 2021-2022'});
   };
     makeplot();

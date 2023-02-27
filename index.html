@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <title>Spotify Project</title>
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 
@@ -14,33 +16,97 @@
 <!-- Our CSS -->
 <link rel="stylesheet" type="text/css" href="style.css"> 
 
+ <!-- Load jQuery -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  
+ <!-- Load Chart.js -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+
+ <!-- Load PapaParse to read csv files -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js"></script>
+  
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+ <script src="clusteredBar.js"></script>
+ <script src="lineChart.js"></script>
+ <script src="bar.js"> </script>
+ <script src="scatter.js"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+
 </head>
 
 <body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Music, Music, music</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="nav justify-content-left">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Plots
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="lineChart.html">Line Chart</a>
+              <a class="dropdown-item" href="bar.html">Bar</a>
+              <!-- <a class="dropdown-item" href="cloudiness.html">Cloudiness</a>
+              <a class="dropdown-item" href="wind-speed.html">Wind Speed</a> -->
+            </div>
+          </li>
+        <li class="nav-item">
+          <a class="nav-link" href="clusteredBar.html">Clustered Bar</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="scatter.html">Scatter</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
   <div class="header">
     <h1>North American Music Jamboree</h1>
     <p>Listen up DINKWAD's</p>
   </div>
-  <div id="column">
-    <div class="row">
-      <h1>Best Artist</h1>
-      <select id="selDataset" onchange="optionChanged(this.value)"></select>
+  
+      <div class="row">
+        <div class="col-md-6"> 
+      <h1>Popular Track Streams</h1>
+      <!-- <select id="selDataset" onchange="optionChanged(this.value)"></select> -->
+      <canvas id="container"></canvas>
+      <!-- <div> -->
+        <!-- <canvas id="chart-container" style="height: 400px; width: 100%"></canvas> -->
+      <!-- </div> -->
+    </div>
+  <!-- </div> -->
+  <div class="col-md-6">
+    <div id="bar">
+    </div>
     </div>
   </div>
-  <div id="column">
+  <!-- <div id="column">
     <div class="row">
-      <h1>Danceability</h1>
-      <select id="selDataset" onchange="optionChanged(this.value)"></select>
+      <h1>Streams By Month</h1>
+        <canvas id="chart-container" style="height: 400px; width: 80%"></canvas>
     </div>
-  </div>
+  </div> -->
   <div id="column">
     <div class="row">
-      <h1>Music by Genre</h1>
-      <select id="selDataset" onchange="optionChanged(this.value)"></select>
+      <h1>Correlation of Streams by Week</h1>
+      <!-- <div id="myDiv" style="width: 800px; height: 500px;">Plotly chart will be drawn inside this DIV</div> -->
+        <canvas id="scatter-container"></canvas>
+    
+      <!-- <select id="selDataset" onchange="optionChanged(this.value)"></select> -->
     </div>
   </div>
 
-  
+
+ 
+
 
 </body>
 
