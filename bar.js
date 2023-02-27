@@ -1,5 +1,5 @@
 function makeplot() {
-    d3.csv("https://raw.githubusercontent.com/trvrbrdgs/Spotify_project/main/music-main/BarChart.csv", function(data){ processData(data) } );
+    d3.csv("https://raw.githubusercontent.com/trvrbrdgs/Spotify_project/main/BarChart.csv", function(data){ processData(data) } );
   
   };
   
