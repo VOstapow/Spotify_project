@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    var TITLE = 'Popular Track name by streams in USA/Canada, 2021-22';
+    var TITLE = 'Popular Artists by streams in USA/Canada, 2021-22';
   
     // `false` for vertical column chart, `true` for horizontal bar chart
     var HORIZONTAL = false;
@@ -17,12 +17,12 @@ $(document).ready(function() {
       {
         column: 'USA  Stream',
         name: 'Total Streams In USA ',
-        color: 'red'
+        color: 'blue'
       },
       {
         column: 'Canada -Streams',
         name: 'Total Streams In Canada',
-        color: 'blue'
+        color: 'red'
       }
     //   {
     //     column: 'loudness',
@@ -32,7 +32,7 @@ $(document).ready(function() {
     ];
   
     // x-axis label and label in tooltip
-    var X_AXIS = 'Track Name';
+    var X_AXIS = 'Artist Name';
   
     // y-axis label, label in tooltip
     var Y_AXIS = 'Total Number of Streams';
