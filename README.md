@@ -10,4 +10,11 @@ URL: https://www.kaggle.com/datasets/yelexa/spotify200
 If you do not have psycopg2 already installed. In terminal you will need to use this command:
 * "pip install psycopg2"
 
+## Data Analysis and Exploration
+* Data was cleaned in jupyter notebook and limited to North America (Canada, Mexico, USA)
 
+## Data Visualization
+* CSV files were created and JavaScript and JQuery were utilized to create visualizations
+
+## Front End Hosting
+* HTML and CSS both were utilized to display the data from javascript and to create a user interactive experience.
