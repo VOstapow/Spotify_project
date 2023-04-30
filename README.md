@@ -16,11 +16,16 @@ If you do not have psycopg2 already installed. In terminal you will need to use 
 
 ## Data Analysis and Exploration
 
-* Data was cleaned in Jupyter notebook and limited to North America (Canada, Mexico, USA)
+* A Dashboard page with multiple charts that all reference the same data was created.
+* Python was used to initially clean data set and place into a csv.
+* Limited analysis to North America (Canada, Mexico, United States) and Fiscal Year 2022 (July 1, 2021 – June 30, 2022.)
+* PostgresSQL and Psycopg2 library were used to import csv data.
+* Python Flask API was Set Up.
+* Used CSVs to connect to Java Script.
 
 ## Data Visualization
 
-* CSV files were created and JavaScript and JQuery were utilized to create visualizations.
+* CSV files were created and JavaScript and JQuery were utilized to create visualizations
 
 ## Front End Hosting
 
