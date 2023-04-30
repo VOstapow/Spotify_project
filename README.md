@@ -29,15 +29,15 @@ If you do not have psycopg2 already installed. In terminal you will need to use 
 
 * CSV files were created and JavaScript and JQuery were utilized to create visualizations
 
-<img src="Images/Main.png" width="600" />
+<img src="Images/Main.png" width="800" />
 
-<img src="Images/StreamWar.png" width="600" />
+<img src="Images/StreamWar.png" width="800" />
 
-<img src="Images/Streams by month.png" width="600" />
+<img src="Images/Streams by month.png" width="800" />
 
-<img src="Images/Top Streams vs. Weeks on Chart.png" width="600" />
+<img src="Images/Top Streams vs. Weeks on Chart.png" width="800" />
 
-<img src="Images/Popular Artist in USA Canada.png" width="600" />
+<img src="Images/Popular Artist in USA Canada.png" width="800" />
 
 ## Front End Hosting
 
