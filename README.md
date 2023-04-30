@@ -1,5 +1,7 @@
 # Project 3 - Data Analysis & Exploration, Back End, Visualizations, Front End Hosting.
 
+Mary Vang, Sandra Braun, Trevor Bridges, Veronica Ostapowich.
+
 ## Spotify Weekly Top 200 Songs Streaming Data
 
 ### Top 200 songs on Spotify by country from 07/01/2021 - 06/30/2022
@@ -26,6 +28,16 @@ If you do not have psycopg2 already installed. In terminal you will need to use 
 ## Data Visualization
 
 * CSV files were created and JavaScript and JQuery were utilized to create visualizations
+
+<img src="Images/Main.png" width="600" />
+
+<img src="Images/StreamWar.png" width="600" />
+
+<img src="Images/Streams by month.png" width="600" />
+
+<img src="Images/Top Streams vs. Weeks on Chart.png" width="600" />
+
+<img src="Images/Popular Artist in USA Canada.png" width="600" />
 
 ## Front End Hosting
 
